@@ -1,0 +1,18 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiosqlite>=0.19.0",
+    "csmarketapi>=2.0.0",
+    "fastapi>=0.109.0",
+    "greenlet>=3.3.0",
+    "httpx>=0.28.1",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "python-dotenv>=1.0.0",
+    "sqlalchemy>=2.0.25",
+    "uvicorn[standard]>=0.27.0",
+]
