@@ -179,7 +179,12 @@ async def update_index(
             item_ids=index_data.item_ids,
         )
 
-        item_count = len(index.item_associations)
+        # Count items directly from database to avoid lazy loading issue
+        from sqlalchemy import select, func
+        from ..models import IndexItem
+        stmt = select(func.count()).select_from(IndexItem).where(IndexItem.index_id == index.id)
+        result = await db.execute(stmt)
+        item_count = result.scalar() or 0
 
         # Get latest price
         latest_price_point = await price_service.get_latest_price(db=db, index_id=index.id)
